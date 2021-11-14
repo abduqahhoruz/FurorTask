@@ -44,7 +44,7 @@ class PutProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addProduct.setOnClickListener{
-            val model = PutProductRequstModel(
+            val mymodel = PutProductRequstModel(
                 binding.etAddress.text.toString(),
                 System.currentTimeMillis().toInt(),
                 binding.etCreatedDate.text.toString(),
@@ -54,7 +54,7 @@ class PutProductFragment : Fragment() {
 
             )
             viewModel.putProduct(
-               model
+               mymodel
             )
         }
     }
