@@ -1,39 +1,48 @@
-package com.example.furortask.presentation.adapter
+package com.example.furortask.presentation.paging
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.furortask.business.data.remote.model.GetProductResponseData
 import com.example.furortask.databinding.ItemCategoryBinding
-import com.example.furortask.presentation.ui.catalog.model.GetProductTypeModelLocal
 
-class CategoryAdapter :
-    ListAdapter<GetProductTypeModelLocal, CategoryAdapter.SpecialityVH>(ItemDiffer())
-{
+class ProductPagingAdapter :
+    PagingDataAdapter<GetProductResponseData, ProductPagingAdapter.SpecialityVH>(ItemDiffer()) {
+
     private val TAG = "TAG"
     private var clickListener: SpecialityClickListener? = null
     fun itemClickListener(clickListener: SpecialityClickListener) {
         this.clickListener = clickListener
     }
+
     class SpecialityVH(
         private val binding: ItemCategoryBinding,
         private val clickListener: SpecialityClickListener?
     ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        private var model: GetProductTypeModelLocal? = null
-        fun onBind(model: GetProductTypeModelLocal) {
+        private var model: GetProductResponseData? = null
+        fun onBind(model: GetProductResponseData) {
             binding.root.setOnClickListener(this)
             this.model = model
-            binding.tvCategoryNameUz.text = model.nameUz
-            binding.tvCategoryNameEn.text = model.address
-            binding.tvCategoryNameRu.text = model.cost.toString()
-            binding.tvCategoryDesc.text = model.createdDate.toString()
+            binding.tvProductTypeId.text = model.productTypeId.toString()
+            binding.tvNameUz.text = model.nameUz
+            binding.tvCost.text = model.cost.toString()
+            binding.tvAddress.text = model.address.toString()
+            binding.tvCreatedDate.text = model.createdDate.toString()
         }
 
         override fun onClick(p0: View?) {
             clickListener?.onClicked(model!!)
+        }
+    }
+
+    override fun onBindViewHolder(holder: SpecialityVH, position: Int) {
+        val currentItem = getItem(position)
+        if (currentItem != null) {
+            holder.onBind(currentItem)
         }
     }
 
@@ -43,23 +52,20 @@ class CategoryAdapter :
         return SpecialityVH(binding, clickListener)
     }
 
-    override fun onBindViewHolder(holder: SpecialityVH, position: Int) {
-        holder.onBind(currentList[position])
-    }
 
 }
 
-class ItemDiffer : DiffUtil.ItemCallback<GetProductTypeModelLocal>() {
+class ItemDiffer : DiffUtil.ItemCallback<GetProductResponseData>() {
     override fun areItemsTheSame(
-        oldItem: GetProductTypeModelLocal,
-        newItem: GetProductTypeModelLocal
+        oldItem: GetProductResponseData,
+        newItem: GetProductResponseData
     ): Boolean {
         return oldItem == newItem
     }
 
     override fun areContentsTheSame(
-        oldItem: GetProductTypeModelLocal,
-        newItem: GetProductTypeModelLocal
+        oldItem: GetProductResponseData,
+        newItem: GetProductResponseData
     ): Boolean {
         return oldItem.id == newItem.id
     }
@@ -67,5 +73,5 @@ class ItemDiffer : DiffUtil.ItemCallback<GetProductTypeModelLocal>() {
 }
 
 interface SpecialityClickListener {
-    fun onClicked(model: GetProductTypeModelLocal)
+    fun onClicked(model: GetProductResponseData)
 }

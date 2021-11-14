@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_category_name_uz"
+            android:id="@+id/tv_product_type_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_18sdp"
@@ -35,40 +35,50 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/iv_category"
             app:layout_constraintTop_toBottomOf="@id/iv_category"
+            tools:text="Product Type" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name_uz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_6sdp"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_product_type_id"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_type_id"
             tools:text="Name Uz" />
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_category_name_ru"
+            android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_6sdp"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tv_category_name_uz"
-            app:layout_constraintTop_toBottomOf="@id/tv_category_name_uz"
-            tools:text="Name Ru" />
+            app:layout_constraintStart_toStartOf="@id/tv_product_type_id"
+            app:layout_constraintTop_toBottomOf="@id/tv_cost"
+            tools:text="Address" />
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_category_desc"
+            android:id="@+id/tv_created_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_6sdp"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tv_category_name_uz"
-            app:layout_constraintTop_toBottomOf="@id/tv_category_name_en"
-            tools:text="Name Ru" />
+            app:layout_constraintStart_toStartOf="@id/tv_address"
+            app:layout_constraintTop_toBottomOf="@id/tv_address"
+            tools:text="Created Date" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_category_name_en"
+            android:id="@+id/tv_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_6sdp"
             android:textStyle="bold"
             android:textAlignment="textStart"
-            app:layout_constraintStart_toStartOf="@id/tv_category_name_ru"
-            app:layout_constraintTop_toBottomOf="@id/tv_category_name_ru"
-            tools:text="Name En" />
+            app:layout_constraintStart_toStartOf="@id/tv_name_uz"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_uz"
+            tools:text="Cost" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

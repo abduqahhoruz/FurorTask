@@ -7,22 +7,34 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.furortask.presentation.ui.catalog.ui.CatalogFragment"
+        android:name="com.example.furortask.presentation.ui.catalog.ui.ProductFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_productPutFramgnet"
+            app:destination="@id/productPutFramgnet" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.furortask.presentation.ui.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_productEditFragment"
+            app:destination="@id/productEditFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/productEditFragment"
+        android:name="com.example.furortask.presentation.ui.catalog.ui.ProductEditFragment"
+        android:label="product_edit_fragment"
+        tools:layout="@layout/product_edit_fragment" />
+    <fragment
+        android:id="@+id/productPutFramgnet"
+        android:name="com.example.furortask.presentation.ui.catalog.ui.PutProductFragment"
+        android:label="product_put_framgnet_fragment"
+        tools:layout="@layout/product_put_framgnet_fragment" />
 </navigation>
